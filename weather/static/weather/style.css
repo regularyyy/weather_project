@@ -1,0 +1,122 @@
+/* Основні налаштування для світлої теми */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background: #e3f2fd;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Темна тема */
+body.dark-theme {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Контейнер займає всю ширину екрана */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Темна тема для контейнера */
+body.dark-theme .container {
+    background: #333333;
+}
+
+/* Інші стилі */
+h1 {
+    color: #16c26c;
+    margin-bottom: 15px;
+}
+
+.weather-form {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #16c26c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #13ad60;
+}
+
+/* Темна тема для кнопок */
+body.dark-theme .btn {
+    background-color: #555555;
+}
+
+.weather-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Горизонтальний ряд прогнозу на всю ширину */
+.forecast-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 15px 0;
+}
+
+/* Менший блок для кожного дня */
+.day-forecast {
+    flex: 1 0 120px;
+    min-width: 120px;
+    background-color: #f1f8e9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.day-forecast:hover {
+    transform: translateY(-3px);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Темна тема для блоків прогнозу */
+body.dark-theme .day-forecast {
+    background-color: #424242;
+}
+
+.weather-icon {
+    width: 40px;
+    height: 40px;
+    margin: 8px 0;
+}
+
+.temperature {
+    font-size: 1em;
+    color: #388e3c;
+    font-weight: bold;
+}
+
+/* Темна тема для температури */
+body.dark-theme .temperature {
+    color: #76ff03;
+}
+
+.recommendation {
+    font-size: 0.8em;
+    color: #616161;
+    margin-top: 8px;
+}

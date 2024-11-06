@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'weather/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast</h1>
+
+        <!-- Кнопка для перемикання теми -->
+        <button id="theme-toggle" class="btn">Dark Theme</button>
+
+        <form method="post" class="weather-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Get Weather</button>
+        </form>
+
+        {% if weather_data %}
+            <div class="weather-info">
+                <h2>7-Day Forecast for {{ city_name }}, {{ country_name }}</h2>
+                
+                <div class="forecast-row">
+                    {% for day in weather_data %}
+                        <div class="day-forecast">
+                            <h3>{{ day.date }}</h3>
+                            <img src="{{ day.icon }}" alt="{{ day.condition }}" class="weather-icon">
+                            <p><strong>Temp:</strong> <span class="temperature">{{ day.temperature }}°C</span></p>
+                            <p><strong>Condition:</strong> {{ day.condition }}</p>
+                            <p class="recommendation">{{ day.recommendation }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+    
+        // Встановлюємо початкову тему і текст кнопки
+        if (currentTheme === "dark") {
+            document.body.classList.add("dark-theme");
+            themeToggleButton.textContent = "Light Theme";
+        } else {
+            themeToggleButton.textContent = "Dark Theme";
+        }
+    
+        themeToggleButton.onclick = function() {
+            document.body.classList.toggle("dark-theme");
+    
+            // Змінюємо текст кнопки залежно від теми
+            if (document.body.classList.contains("dark-theme")) {
+                themeToggleButton.textContent = "Light Theme";
+                localStorage.setItem("theme", "dark");
+            } else {
+                themeToggleButton.textContent = "Dark Theme";
+                localStorage.setItem("theme", "light");
+            }
+        };
+    });
+</script>   
+        
+</body>
+</html>
